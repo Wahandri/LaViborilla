@@ -1,0 +1,33 @@
+.section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.inner {
+  background: rgba(12, 20, 20, 0.9);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  line-height: 1.7;
+}
+
+.inner h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.inner p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .inner {
+    padding: 2rem;
+  }
+}
