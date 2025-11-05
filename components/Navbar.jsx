@@ -1,48 +1,56 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
-import { primaryLinks, secondaryLinks } from '@/data/navigation';
+
+const links = [
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#carta', label: 'Carta' },
+  { href: '#galeria', label: 'Galería' },
+  { href: '#reservas', label: 'Reservas' },
+  { href: '#contacto', label: 'Contacto' }
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const toggleMenu = () => setOpen((prev) => !prev);
+  const closeMenu = () => setOpen(false);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
-        <Link href="/" className={styles.brand}>
-          LB Restaurants
+        <Link href="#inicio" className={styles.logo} onClick={closeMenu}>
+          La Viborrilla
         </Link>
         <button
-          className={styles.toggle}
-          onClick={() => setOpen((prev) => !prev)}
+          className={styles.menuButton}
+          type="button"
           aria-expanded={open}
           aria-label="Abrir menú"
+          onClick={toggleMenu}
         >
           <span />
           <span />
           <span />
         </button>
-        <nav className={`${styles.navigation} ${open ? styles.open : ''}`}>
-          <ul className={styles.primaryList}>
-            {primaryLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={() => setOpen(false)}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ul className={styles.secondaryList}>
-            {secondaryLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} onClick={() => setOpen(false)}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <nav className={`${styles.nav} ${open ? styles.open : ''}`}>
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className={styles.link} onClick={closeMenu}>
+              {link.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>
