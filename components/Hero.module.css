@@ -1,0 +1,52 @@
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+  filter: saturate(1.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 18, 18, 0.6), rgba(10, 18, 18, 0.95));
+}
+
+.content {
+  position: relative;
+  max-width: 720px;
+  padding: 4rem 1.5rem;
+  z-index: 1;
+}
+
+.subtitle {
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin: 0 0 1rem;
+  line-height: 1.1;
+}
+
+.description {
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
