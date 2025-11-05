@@ -1,9 +1,9 @@
 .hero {
   position: relative;
-  min-height: 70vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
   overflow: hidden;
 }
 
@@ -14,39 +14,91 @@
 
 .image {
   object-fit: cover;
-  filter: saturate(1.1);
+  filter: saturate(1.05);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 18, 18, 0.6), rgba(10, 18, 18, 0.95));
+  background: linear-gradient(120deg, rgba(21, 21, 21, 0.5), rgba(21, 21, 21, 0.2));
 }
 
 .content {
   position: relative;
-  max-width: 720px;
-  padding: 4rem 1.5rem;
   z-index: 1;
+  text-align: center;
+  color: #fff;
+  max-width: 740px;
+  padding: 0 24px;
 }
 
-.subtitle {
-  letter-spacing: 0.6em;
+.overline {
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 18px;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin: 0 0 1rem;
+.content h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 600;
   line-height: 1.1;
+  margin-bottom: 24px;
 }
 
-.description {
-  margin: 0 auto;
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 auto 36px;
+  max-width: 620px;
+}
+
+.actions {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.primaryButton {
+  background: var(--accent);
+  color: #1f1d1a;
+  box-shadow: 0 12px 25px rgba(197, 160, 89, 0.35);
+}
+
+.primaryButton:hover,
+.primaryButton:focus {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 80vh;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
 }

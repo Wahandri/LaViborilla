@@ -1,17 +1,28 @@
 :root {
-  color-scheme: dark;
+  --background: #f5f3ef;
+  --text-primary: #1f1d1a;
+  --text-muted: #504c46;
+  --accent: #c5a059;
+  --accent-dark: #9a7d3a;
+  --max-width: 1200px;
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
 }
 
 a {
@@ -21,9 +32,41 @@ a {
 
 img {
   max-width: 100%;
-  height: auto;
+  display: block;
+}
+
+.layout-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-  display: block;
+  flex: 1;
+}
+
+section {
+  padding: 80px 20px;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 16px;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

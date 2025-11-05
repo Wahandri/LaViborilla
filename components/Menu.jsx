@@ -1,27 +1,45 @@
-import Link from 'next/link';
 import styles from './Menu.module.css';
 
-export default function Menu({ title, items }) {
+const dishes = [
+  {
+    name: 'Espetos de Sardinas',
+    description: 'Sardinas frescas asadas a la brasa frente al mar, con aliño cítrico y aceite de oliva virgen extra.',
+    price: '14 €'
+  },
+  {
+    name: 'Arroz Caldoso de Marisco',
+    description: 'Arroz meloso con gamba roja, almejas y caldo de pescado artesanal, acabado con azafrán malagueño.',
+    price: '24 €'
+  },
+  {
+    name: 'Lubina a la Sal',
+    description: 'Lubina de lonja horneada en costra de sal marina, servida con verduras ecológicas de temporada.',
+    price: '28 €'
+  }
+];
+
+export default function Menu() {
   return (
-    <section className={styles.section}>
-      <div className={styles.header}>
-        <h2>{title}</h2>
-      </div>
-      <div className={styles.grid}>
-        {items.map((item) => (
-          <article key={item.title} className={styles.card}>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <div className={styles.meta}>
-              {item.phone ? <p className={styles.phone}>{item.phone}</p> : null}
-              {item.cta ? (
-                <Link href={item.cta.href} className={styles.link}>
-                  {item.cta.label}
-                </Link>
-              ) : null}
-            </div>
-          </article>
-        ))}
+    <section id="carta" className={`fade-in ${styles.menuSection}`}>
+      <div className={styles.inner}>
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>Nuestra carta</p>
+          <h2>Sabores mediterráneos con producto local</h2>
+          <p className={styles.description}>
+            Una propuesta que honra la tradición marinera de Benalmádena con ingredientes frescos y una presentación contemporánea.
+          </p>
+        </div>
+        <div className={styles.grid}>
+          {dishes.map((dish) => (
+            <article key={dish.name} className={styles.card}>
+              <div>
+                <h3>{dish.name}</h3>
+                <p>{dish.description}</p>
+              </div>
+              <span className={styles.price}>{dish.price}</span>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
